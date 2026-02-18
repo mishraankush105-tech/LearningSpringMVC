@@ -1,5 +1,6 @@
 package com.demo.service.imp;
 
+import com.demo.dto.AddNewStudentDto;
 import com.demo.dto.StudentDto;
 import com.demo.entity.Student;
 import com.demo.reposistory.StudentReposistory;
@@ -21,5 +22,19 @@ public class StudentServiceImp implements StudentService {
     public List<StudentDto> getStudent() {
         List<Student> students = studentReposistory.findAll();
         return students.stream().map(student -> modelMapper.map(student,StudentDto.class)).toList();
+    }
+
+    @Override
+    public StudentDto getStudentById(Long myid) {
+        Student student = studentReposistory.findById(myid)
+                .orElseThrow(() -> new RuntimeException("Student not found id"+myid));
+        return modelMapper.map(student,StudentDto.class);
+    }
+
+    @Override
+    public StudentDto createNewStudent(AddNewStudentDto addNewStudnetDto) {
+        Student newStudent = modelMapper.map(addNewStudnetDto, Student.class);
+        Student student = studentReposistory.save(newStudent);
+        return modelMapper.map(student, StudentDto.class);
     }
 }
