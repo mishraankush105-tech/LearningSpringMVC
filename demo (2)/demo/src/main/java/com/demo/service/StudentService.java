@@ -11,4 +11,8 @@ public interface StudentService {
      List<StudentDto> getStudent();
      StudentDto getStudentById( Long myid);
       StudentDto createNewStudent(AddNewStudentDto addNewStudnetDto);
+
+    void deleteStudentById(Long id);
+
+    @Nullable StudentDto updateStudentById(Long id, AddNewStudentDto addNewStudentDto);
 }
