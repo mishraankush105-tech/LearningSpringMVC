@@ -3,9 +3,11 @@ package com.demo.service;
 import com.demo.dto.AddNewStudentDto;
 import com.demo.dto.StudentDto;
 import org.jspecify.annotations.Nullable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface StudentService {
 
      List<StudentDto> getStudent();
