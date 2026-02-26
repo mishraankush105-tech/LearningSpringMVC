@@ -31,7 +31,7 @@ public class TeacherController {
         return ResponseEntity.ok(teacherService.getTeacherById(id));
     }
 
-    @PostMapping
+    @PostMapping("/newTeacher")
     public ResponseEntity<TeacherDto> createNewTeacher(@RequestBody AddNewTeacherDto addNewTeacherDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(teacherService.createNewTeacher(addNewTeacherDto));
     }
